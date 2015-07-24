@@ -1,12 +1,9 @@
 #include "FastLED.h"
 #include <RFduinoBLE.h>
-// How many leds in your strip?
-#define NUM_LEDS 16
 
-// For led chips like Neopixels, which have a data line, ground, and power, you just
-// need to define DATA_PIN.  For led chipsets that are SPI based (four wires - data, clock,
-// ground, and power), like the LPD8806 define both DATA_PIN and CLOCK_PIN
-#define DATA_PIN 1
+// How many leds in your strip?
+#define NUM_LEDS 144
+#define DATA_PIN 5
 // #define CLOCK_PIN 13
 #define DATA_PIN2 2
 // Define the array of leds
@@ -16,10 +13,10 @@ int red = 255;
 int blue = 0;
 int del = 30;
 int scene = 1;
-int BRIGHTNESS = 100;
+int BRIGHTNESS = 64;
 
 void setup() { 
-  RFduinoBLE.deviceName = "BlinkHead";
+  RFduinoBLE.deviceName = "Defcon Lanyard";
   RFduinoBLE.advertisementInterval = 675;
   RFduinoBLE.advertisementData = "LED";
   RFduinoBLE.begin();
