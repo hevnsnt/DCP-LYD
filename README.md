@@ -1,7 +1,8 @@
 # DCP-LYD
+**Code Name :: FloorFlowers**
 
 Requirements:
-* Install the Arduino SDK: http://arduino.cc/en/Main/Softwar
+* Install the Arduino SDK: http://arduino.cc/en/Main/Software
 	- Edit preferences, add http://rfduino.com/package_rfduino_index.json to "Additional Board Manager URLs" and save.
 	- Open the "Boards Manager" under Tools -> Board menu
 	- Select the RFduino package at the end of the list, and click to install it.

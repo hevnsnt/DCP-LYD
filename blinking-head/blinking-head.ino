@@ -4,8 +4,7 @@
 // How many leds in your strip?
 #define NUM_LEDS 144
 #define DATA_PIN 5
-// #define CLOCK_PIN 13
-#define DATA_PIN2 2
+
 // Define the array of leds
 CRGB leds[NUM_LEDS];
 int green = 0;
@@ -21,7 +20,6 @@ void setup() {
   RFduinoBLE.advertisementData = "LED";
   RFduinoBLE.begin();
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
-  FastLED.addLeds<NEOPIXEL, DATA_PIN2>(leds, NUM_LEDS);
   FastLED.setBrightness( BRIGHTNESS );
 }
 
