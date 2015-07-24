@@ -1,4 +1,17 @@
+/*
+The sketch is for use for the DefconParties 'FloorFlower' device only.
+Please put more infor here someday, ok?
+
+Lots of code stolen from: 
+  -FastLED.io DemoReel
+  -FastLED Fire2012
+  -http://joergwende.wordpress.com
+*/
+
 #include "FastLED.h"
+#if FASTLED_VERSION < 3001000
+#error "Requires FastLED 3.1 or later; check github for latest code."
+#endif
 #include <RFduinoBLE.h>
 
 // How many leds in your strip?
@@ -6,21 +19,26 @@
 #define DATA_PIN 5
 
 // Define the array of leds
+FASTLED_USING_NAMESPACE
+#define DATA_PIN    5
+#define LED_TYPE    WS2812
+#define COLOR_ORDER GRB
+#define NUM_LEDS    144
+#define COOLING  55 // for fire animation
+#define SPARKING 120 // for fire animation
 CRGB leds[NUM_LEDS];
-int green = 0;
-int red = 255;
-int blue = 0;
-int del = 30;
-int scene = 1;
-int BRIGHTNESS = 64;
+#define BRIGHTNESS          64
+#define FRAMES_PER_SECOND  120
 
 void setup() { 
+  delay(3000); // 3 second delay for recovery
   RFduinoBLE.deviceName = "Defcon Lanyard";
   RFduinoBLE.advertisementInterval = 675;
   RFduinoBLE.advertisementData = "LED";
   RFduinoBLE.begin();
-  FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
-  FastLED.setBrightness( BRIGHTNESS );
+  // tell FastLED about the LED strip configuration
+  FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+  FastLED.setBrightness(BRIGHTNESS); // set master brightness control
 }
 
  void loop() {
