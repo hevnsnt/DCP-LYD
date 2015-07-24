@@ -41,14 +41,30 @@ void setup() {
   FastLED.setBrightness(BRIGHTNESS); // set master brightness control
 }
 
- void loop() {
-   
+// List of patterns to cycle through.  Each is defined as a separate function below.
+typedef void (*SimplePatternList[])();
+SimplePatternList gPatterns = { rainbow, rainbowWithGlitter, confetti, sinelon, juggle, bpm, Fire2012 };
+
+uint8_t gCurrentPatternNumber = 0; // Index number of which pattern is current
+uint8_t gHue = 0; // rotating "base color" used by many of the patterns
+
+void loop() {
+  // send the 'leds' array out to the actual LED strip
+  FastLED.show();  
+  // insert a delay to keep the framerate modest
+  FastLED.delay(1000/FRAMES_PER_SECOND); 
+
+  // do some periodic updates
+  EVERY_N_MILLISECONDS( 20 ) { gHue++; } // slowly cycle the "base color" through the rainbow
+  #define ARRAY_SIZE(A) (sizeof(A) / sizeof((A)[0]))   
+  
    switch(scene) {
      case 1:
     colorWipe(255, 0, 0, del); // Red
     colorWipe(0, 255, 0, del); // Green
     colorWipe(0, 0, 255, del); // Blue
       break;
+    
     case 2:
    for(int dot = 0; dot < NUM_LEDS; dot++) { 
        leds[dot].r = red;
@@ -60,6 +76,7 @@ void setup() {
       delay(del);
     }
     break;
+    
     case 3: 
   // Send a theater pixel chase in...
   theaterChase(127, 127, 127, del); // White
@@ -89,34 +106,81 @@ void RFduinoBLE_onReceive(char *data, int len){
   }
 }
 
-//Theatre-style crawling lights.
-void theaterChase(uint32_t r,uint32_t g,uint32_t b, uint8_t wait) {
-  for (int j=0; j<10; j++) {  //do 10 cycles of chasing
-    for (int q=0; q < 3; q++) {
-      for (int i=0; i < NUM_LEDS; i=i+3) {
-       //turn every third pixel on
-        leds[i+q].r=r;
-        leds[i+q].g= g;
-        leds[i+q].b= b;
-      }
-      FastLED.show();
-      delay(wait);
-      for (int i=0; i < NUM_LEDS; i=i+3) {
-        //turn every third pixel off
-         leds[i+q].r=0;
-         leds[i+q].g= 0;
-         leds[i+q].b= 0;
-      }
-    }
+void rainbowWithGlitter() 
+{
+  // built-in FastLED rainbow, plus some random sparkly glitter
+  rainbow();
+  addGlitter(80);
+}
+
+void addGlitter( fract8 chanceOfGlitter) 
+{
+  if( random8() < chanceOfGlitter) {
+    leds[ random16(NUM_LEDS) ] += CRGB::White;
   }
 }
 
-void colorWipe(uint32_t r,uint32_t g,uint32_t b, uint8_t wait) {
-  for(uint16_t i=0; i<NUM_LEDS; i++) {
-   leds[i].r=r;
-   leds[i].g= g;
-   leds[i].b= b;
-      FastLED.show();
-      delay(wait);
+void confetti() 
+{
+  // random colored speckles that blink in and fade smoothly
+  fadeToBlackBy( leds, NUM_LEDS, 10);
+  int pos = random16(NUM_LEDS);
+  leds[pos] += CHSV( gHue + random8(64), 200, 255);
+}
+
+void sinelon()
+{
+  // a colored dot sweeping back and forth, with fading trails
+  fadeToBlackBy( leds, NUM_LEDS, 20);
+  int pos = beatsin16(13,0,NUM_LEDS);
+  leds[pos] += CHSV( gHue, 255, 192);
+}
+
+void bpm()
+{
+  // colored stripes pulsing at a defined Beats-Per-Minute (BPM)
+  uint8_t BeatsPerMinute = 62;
+  CRGBPalette16 palette = PartyColors_p;
+  uint8_t beat = beatsin8( BeatsPerMinute, 64, 255);
+  for( int i = 0; i < NUM_LEDS; i++) { //9948
+    leds[i] = ColorFromPalette(palette, gHue+(i*2), beat-gHue+(i*10));
   }
 }
+
+void juggle() {
+  // eight colored dots, weaving in and out of sync with each other
+  fadeToBlackBy( leds, NUM_LEDS, 20);
+  byte dothue = 0;
+  for( int i = 0; i < 8; i++) {
+    leds[beatsin16(i+7,0,NUM_LEDS)] |= CHSV(dothue, 200, 255);
+    dothue += 32;
+  }
+}
+
+void Fire2012()
+{
+// Array of temperature readings at each simulation cell
+  static byte heat[NUM_LEDS];
+
+  // Step 1.  Cool down every cell a little
+    for( int i = 0; i < NUM_LEDS; i++) {
+      heat[i] = qsub8( heat[i],  random8(0, ((COOLING * 10) / NUM_LEDS) + 2));
+    }
+  
+    // Step 2.  Heat from each cell drifts 'up' and diffuses a little
+    for( int k= NUM_LEDS - 1; k >= 2; k--) {
+      heat[k] = (heat[k - 1] + heat[k - 2] + heat[k - 2] ) / 3;
+    }
+    
+    // Step 3.  Randomly ignite new 'sparks' of heat near the bottom
+    if( random8() < SPARKING ) {
+      int y = random8(7);
+      heat[y] = qadd8( heat[y], random8(160,255) );
+    }
+
+    // Step 4.  Map from heat cells to LED colors
+    for( int j = 0; j < NUM_LEDS; j++) {
+        leds[j] = HeatColor( heat[j]);
+    }
+}
+
