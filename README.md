@@ -9,8 +9,8 @@ Requirements:
 	- Select the board and port
 * FastLED Library: https://github.com/FastLED/FastLED/tree/FastLED3.1
 
-Currently working code: FloorFlowers
+Currently working code: 
 
+	FloorFlowers
 	-Warning it is pretty glitchy
-	
 	-In order to change patters, send 0301, 0302, 0303, 0304
