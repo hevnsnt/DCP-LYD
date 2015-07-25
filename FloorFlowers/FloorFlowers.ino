@@ -60,9 +60,10 @@ void loop() {
   
    switch(scene) {
      case 1:
-    colorWipe(255, 0, 0, del); // Red
-    colorWipe(0, 255, 0, del); // Green
-    colorWipe(0, 0, 255, del); // Blue
+    
+    //colorWipe(255, 0, 0, del); // Red
+    //colorWipe(0, 255, 0, del); // Green
+    //colorWipe(0, 0, 255, del); // Blue
       break;
     
     case 2:
