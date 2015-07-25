@@ -24,3 +24,9 @@ NEED WORK:
 	* Make a function that turns off all LEDs
 	* Make a function that turns ALL LEDS on a certain color
 	* Make a mode that needs RGB input, light the whole strand. Get this input from color wheel
+
+
+Source code is documentation for FastLED.  
+
+	* http://fastled.io/docs/3.1/colorutils_8h_source.html
+	* http://fastled.io/docs/3.1/lib8tion_8h_source.html

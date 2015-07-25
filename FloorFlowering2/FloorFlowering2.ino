@@ -46,7 +46,7 @@ void setup() {
 
 // List of patterns to cycle through.  Each is defined as a separate function below.
 typedef void (*SimplePatternList[])();
-SimplePatternList gPatterns = { rainbowWithGlitter, confetti, sinelon, juggle, bpm, Fire2012, Cylon, discostrobe };
+SimplePatternList gPatterns = { rainbowWithGlitter, confetti, sinelon, juggle, bpm, Fire2012, Cylon, discostrobe, RRRGGGBBB };
 
 uint8_t gCurrentPatternNumber = 6; // Index number of which pattern is current
 uint8_t gHue = 0; // rotating "base color" used by many of the patterns
@@ -151,6 +151,14 @@ void juggle() {
     leds[beatsin16(i+7,0,NUM_LEDS)] |= CHSV(dothue, 200, 255);
     dothue += 32;
   }
+}
+
+void RRRGGGBBB() {
+  fill_solid(leds,NUM_LEDS, 0xff00ff);﻿
+  //helpful dude once told me:
+  //fill_solid(leds,NUM_LEDS, 0xff00ff);            //An RGB value
+  //fill_solid( leds, NUM_LEDS, CRGB(50,0,200));
+  //fill_solid( leds, NUM_LEDS, CHSV(150,255,200));﻿
 }
 
 void Fire2012() {
