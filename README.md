@@ -18,6 +18,7 @@ Currently working code:
 
 
 NEED WORK:
+
 	* Input bluetooth command (00, 01, 02, etc) and directly call the appropriate animation
 	* Make a function that turns off all LEDs
 	* Make a function that turns ALL LEDS on a certain color
