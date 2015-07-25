@@ -11,6 +11,14 @@ Requirements:
 
 Currently working code: 
 
-	**FloorFlowers**
+	::FloorFlowers::
 	-Warning it is pretty glitchy
 	-In order to change patters, send 0301, 0302, 0303, 0304
+
+
+
+NEED WORK:
+	* Input bluetooth command (00, 01, 02, etc) and directly call the appropriate animation
+	* Make a function that turns off all LEDs
+	* Make a function that turns ALL LEDS on a certain color
+	* Make a mode that needs RGB input, light the whole strand. Get this input from color wheel
