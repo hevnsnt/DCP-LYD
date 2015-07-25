@@ -29,10 +29,11 @@ CRGB leds[NUM_LEDS];
 
 void setup() {
   delay(3000); // 3 second delay for recovery
+  RFduinoBLE.txPowerLevel = "-20db";
   RFduinoBLE.deviceName = "Defcon Lanyard";
   RFduinoBLE.advertisementInterval = 2000;
   RFduinoBLE.advertisementData = "LED";
-  //RFduinoBLE.begin();
+  RFduinoBLE.begin();
   // tell FastLED about the LED strip configuration
   FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
   //FastLED.addLeds<LED_TYPE,DATA_PIN,CLK_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
