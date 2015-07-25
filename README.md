@@ -10,7 +10,7 @@ Requirements:
 * FastLED Library: https://github.com/FastLED/FastLED/tree/FastLED3.1
 * Hardware Schematics and Build Instructions are posted at: https://goo.gl/Tfyoja
 
-PLEASE SEE THE WIKI for the latest updates: https://github.com/hevnsnt/DCP-LYD/wiki
+**PLEASE SEE THE WIKI for the latest updates:** https://github.com/hevnsnt/DCP-LYD/wiki
 
 Currently working code: 
 
