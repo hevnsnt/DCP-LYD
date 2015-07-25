@@ -38,6 +38,7 @@ void setup() {
   // tell FastLED about the LED strip configuration
   FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
   FastLED.setBrightness(BRIGHTNESS); // set master brightness control
+  turnoff();
 }
 
 
@@ -388,6 +389,14 @@ static void delayToSyncFrameRate( uint8_t framesPerSecond)
     delay( mstargetdelta - msdelta);
   }
   msprev = mscur;
+}
+
+void turnoff() {
+  fill_solid(leds,NUM_LEDS, 0x000000);﻿
+  //helpful dude once told me:
+  //fill_solid(leds,NUM_LEDS, 0xff00ff);            //An RGB value
+  //fill_solid( leds, NUM_LEDS, CRGB(50,0,200));
+  //fill_solid( leds, NUM_LEDS, CHSV(150,255,200));﻿
 }
 
 
