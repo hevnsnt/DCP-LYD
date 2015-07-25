@@ -29,6 +29,7 @@ FASTLED_USING_NAMESPACE
 CRGB leds[NUM_LEDS];
 #define BRIGHTNESS          64
 #define FRAMES_PER_SECOND  120
+int scene = 1;
 
 void setup() { 
   delay(3000); // 3 second delay for recovery
@@ -57,17 +58,18 @@ void loop() {
   // do some periodic updates
   EVERY_N_MILLISECONDS( 20 ) { gHue++; } // slowly cycle the "base color" through the rainbow
   #define ARRAY_SIZE(A) (sizeof(A) / sizeof((A)[0]))   
-  
-   switch(scene) {
+
+     switch(scene) {
      case 1:
-    
-    //colorWipe(255, 0, 0, del); // Red
-    //colorWipe(0, 255, 0, del); // Green
-    //colorWipe(0, 0, 255, del); // Blue
+     confetti();
+    /*colorWipe(255, 0, 0, del); // Red
+    colorWipe(0, 255, 0, del); // Green
+    colorWipe(0, 0, 255, del); // Blue */
       break;
-    
+      
     case 2:
-   for(int dot = 0; dot < NUM_LEDS; dot++) { 
+    rainbowWithGlitter();
+   /*for(int dot = 0; dot < NUM_LEDS; dot++) { 
        leds[dot].r = red;
        leds[dot].g = green;
        leds[dot].b = blue;
@@ -75,36 +77,42 @@ void loop() {
       // clear this led for the next time around the loop
       leds[dot] = CRGB::Black;
       delay(del);
-    }
+    } */
     break;
-    
     case 3: 
-  // Send a theater pixel chase in...
+    juggle();
+  /*// Send a theater pixel chase in...
   theaterChase(127, 127, 127, del); // White
   theaterChase(127,   0,   0, del); // Red
-  theaterChase(0,   0, 127, del); // Blue 
+  theaterChase(0,   0, 127, del); // Blue */
   break;
 }  
 }
-    
+  
 void RFduinoBLE_onReceive(char *data, int len){
     switch (data[0]) {
     case 1:
-      red = data[1];
-      green = data[2];
-      blue = data[3];
+      //red = data[1];
+      //green = data[2];
+      //blue = data[3];
       break;
     case 2:
-      del = data[1];
+      //del = data[1];
       break;
     case 3:
       scene = data[1];
       break;
     case 4:
-      BRIGHTNESS = data[1];
+      //BRIGHTNESS = data[1];
       FastLED.setBrightness( BRIGHTNESS );
       break;
   }
+}
+
+void rainbow() 
+{
+  // FastLED's built-in rainbow generator
+  fill_rainbow( leds, NUM_LEDS, gHue, 7);
 }
 
 void rainbowWithGlitter() 
