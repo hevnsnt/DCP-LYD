@@ -1,31 +1,32 @@
+/*
+The sketch is for use for the DefconParties 'FloorFlower' device only.
+Please put more infor here someday, ok?
+
+Lots of code stolen from: 
+  -FastLED.io DemoReel
+  -FastLED Fire2012
+  -http://joergwende.wordpress.com
+*/
+
+// Needed Includes -- Do not add anything here unless hevnsnt approves! :)
 #include "FastLED.h"
 #include <RFduinoBLE.h>
 
+
+//Define our variables ::: These are User Configuratable for the most part
+#define DATA_PIN    5 // Data pin connected to Arduino
+#define LED_TYPE    WS2812
+#define NUM_LEDS    144 // How many LEDs are in your strand
+#define COLOR_ORDER GRB
+#define BRIGHTNESS  64 // 255 is full brightness, 127 is half, 63 is quarter brightness.
+#define FRAMES_PER_SECOND  120
+#define FIRE_LEDS   70 // How many LEDs do you want in the Fire animation
+#define COOLING  55 // Needed for Fire Animation
+#define SPARKING 120 // Needed for Fire Animation
+#define ZOOMING_BEATS_PER_MINUTE 122 // Needed for Disco Animation
+CRGB leds[NUM_LEDS];
 FASTLED_USING_NAMESPACE
 
-// FastLED "100-lines-of-code" demo reel, showing just a few 
-// of the kinds of animation patterns you can quickly and easily 
-// compose using FastLED.  
-//
-// This example also shows one easy way to define multiple 
-// animations patterns and have them automatically rotate.
-//
-// -Mark Kriegsman, December 2014
-
-#define COOLING  55
-#define SPARKING 120
-
-#define DATA_PIN    5
-//#define CLK_PIN   4
-#define LED_TYPE    WS2812
-#define COLOR_ORDER GRB
-#define NUM_LEDS    144
-#define FIRE_LEDS   70
-CRGB leds[NUM_LEDS];
-
-#define BRIGHTNESS          64
-#define FRAMES_PER_SECOND  120
-#define ZOOMING_BEATS_PER_MINUTE 122
 
 void setup() {
   delay(3000); // 3 second delay for recovery
