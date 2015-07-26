@@ -94,6 +94,16 @@ void nextPattern()
   gCurrentPatternNumber = (gCurrentPatternNumber + 1) % ARRAY_SIZE( gPatterns);
 }
 
+
+
+
+
+
+
+
+
+
+////////////////////////////////////- Animations Below -///////////////////////////////////// 
 void rainbow() 
 {
   // FastLED's built-in rainbow generator
