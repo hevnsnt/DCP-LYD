@@ -1,5 +1,5 @@
 # DCP-LYD
-**Code Name :: FloorFlowers**
+**Code Name :: FloorFlowering**
 
 **PLEASE SEE THE WIKI for the latest updates:** https://github.com/hevnsnt/DCP-LYD/wiki
 
