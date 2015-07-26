@@ -45,7 +45,7 @@ void setup() {
 
 // List of patterns to cycle through.  Each is defined as a separate function below.
 typedef void (*SimplePatternList[])();
-SimplePatternList gPatterns = { rgbGlitter, confetti, sinelon, juggle, bpm, Fire2012, Cylon, discostrobe, rainbowWithGlitter, RRRGGGBBB };
+SimplePatternList gPatterns = { rgbGlitter, confetti, sinelon, juggle, bpm, Fire2012, Cylon, discostrobe, rainbowWithGlitter, DefconParties, RRRGGGBBB };
 
 uint8_t gCurrentPatternNumber = 1; // Index number of which pattern is current
 uint8_t rotator = 0; // If set to 1, rotate through the patterns
@@ -97,7 +97,8 @@ switch (data[0])
   case 4: gCurrentPatternNumber = 4; // bpm
           break;
           
-  case 5: gCurrentPatternNumber = 5; // Fire2012
+  case 5: fill_solid( leds, NUM_LEDS, CRGB::Black);
+          gCurrentPatternNumber = 5; // Fire2012
           break;
           
   case 6: gCurrentPatternNumber = 6; // Cylon
@@ -106,10 +107,13 @@ switch (data[0])
   case 7: gCurrentPatternNumber = 7; // Discostrobe
           break;
 
-  case 8: gCurrentPatternNumber = 'queercon'; // RainbowWithGlitter
+  case 8: gCurrentPatternNumber = 8; // RainbowWithGlitter
           break;
 
-  case 9: gCurrentPatternNumber = 9; // RRRGGGBBB  -- not working yet
+  case 9: gCurrentPatternNumber = 9; // DefconParties  -- not working yet
+          break;
+
+  case 10: gCurrentPatternNumber = 10; // RRRGGGBBB  -- not working yet
           break;
                                                   
   }
@@ -195,6 +199,11 @@ void juggle() {
     leds[beatsin16(i+7,0,NUM_LEDS)] |= CHSV(dothue, 200, 255);
     dothue += 32;
   }
+}
+
+void DefconParties() {
+  fill_solid( leds, NUM_LEDS, CRGB::Maroon);
+  addGlitter(80);
 }
 
 void RRRGGGBBB() {
