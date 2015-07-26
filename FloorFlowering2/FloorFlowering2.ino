@@ -30,7 +30,7 @@ FASTLED_USING_NAMESPACE
 
 void setup() {
   delay(3000); // 3 second delay for recovery
-  RFduinoBLE.txPowerLevel = "-20db";
+  RFduinoBLE.txPowerLevel = -20;
   RFduinoBLE.deviceName = "Defcon Lanyard";
   RFduinoBLE.advertisementInterval = 2000;
   RFduinoBLE.advertisementData = "LED";
@@ -57,7 +57,7 @@ void loop()
   FastLED.delay(1000/FRAMES_PER_SECOND); 
   // do some periodic updates
   EVERY_N_MILLISECONDS( 20 ) { gHue++; } // slowly cycle the "base color" through the rainbow
-  EVERY_N_SECONDS( 30 ) { nextPattern(); } // change patterns periodically
+  //EVERY_N_SECONDS( 30 ) { nextPattern(); } // change patterns periodically
 }
 
 #define ARRAY_SIZE(A) (sizeof(A) / sizeof((A)[0]))
@@ -65,7 +65,7 @@ void loop()
 void RFduinoBLE_onConnect()
 {
   Serial.println("RFduino BLE connection successful");
-  bpm(); 
+  gCurrentPatternNumber = 8; 
 }
 
 void RFduinoBLE_onReceive(char *data, int len){
@@ -162,7 +162,13 @@ void juggle() {
 }
 
 void RRRGGGBBB() {
-  fill_solid(leds,NUM_LEDS, 0xff00ff);﻿
+  fill_solid( leds, NUM_LEDS, CRGB::Red);
+  FastLED.show();
+  delay(100);
+  // Set the strip back to black for 1 second
+  fill_solid( leds, NUM_LEDS, CRGB::Black);
+  FastLED.show();
+  delay(100); 
   //helpful dude once told me:
   //fill_solid(leds,NUM_LEDS, 0xff00ff);            //An RGB value
   //fill_solid( leds, NUM_LEDS, CRGB(50,0,200));
@@ -402,7 +408,7 @@ static void delayToSyncFrameRate( uint8_t framesPerSecond)
 }
 
 void turnoff() {
-  fill_solid(leds,NUM_LEDS, 0x000000);﻿
+  fill_solid( leds, NUM_LEDS, CRGB::Black);
   //helpful dude once told me:
   //fill_solid(leds,NUM_LEDS, 0xff00ff);            //An RGB value
   //fill_solid( leds, NUM_LEDS, CRGB(50,0,200));
