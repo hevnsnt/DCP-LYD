@@ -47,3 +47,4 @@ Source code is documentation for FastLED.
 
 	* http://fastled.io/docs/3.1/colorutils_8h_source.html
 	* http://fastled.io/docs/3.1/lib8tion_8h_source.html
+	* Color list: https://github.com/FastLED/FastLED/wiki/Pixel-reference#predefined-colors-list

@@ -45,7 +45,7 @@ void setup() {
 
 // List of patterns to cycle through.  Each is defined as a separate function below.
 typedef void (*SimplePatternList[])();
-SimplePatternList gPatterns = { rainbowWithGlitter, confetti, sinelon, juggle, bpm, Fire2012, Cylon, discostrobe, RRRGGGBBB };
+SimplePatternList gPatterns = { rgbGlitter, confetti, sinelon, juggle, bpm, Fire2012, Cylon, discostrobe, rainbowWithGlitter, RRRGGGBBB };
 
 uint8_t gCurrentPatternNumber = 1; // Index number of which pattern is current
 uint8_t rotator = 0; // If set to 1, rotate through the patterns
@@ -82,7 +82,7 @@ void RFduinoBLE_onConnect()
 void RFduinoBLE_onReceive(char *data, int len){
 switch (data[0])
 {
-  case 0: gCurrentPatternNumber = 0; // RainbowWithGlitter
+  case 0: gCurrentPatternNumber = 0; // rgbGlitter
           break;
 
   case 1: gCurrentPatternNumber = 1; // Confetti
@@ -106,10 +106,10 @@ switch (data[0])
   case 7: gCurrentPatternNumber = 7; // Discostrobe
           break;
 
-  case 8: gCurrentPatternNumber = 8; // RRRGGGBBB  -- not working yet
+  case 8: gCurrentPatternNumber = 'queercon'; // RainbowWithGlitter
           break;
 
-  case 9: gCurrentPatternNumber = 9; // RotatOR  -- not working yet
+  case 9: gCurrentPatternNumber = 9; // RRRGGGBBB  -- not working yet
           break;
                                                   
   }
@@ -131,6 +131,15 @@ void nextPattern()
 
 
 ////////////////////////////////////- Animations Below -///////////////////////////////////// 
+void rgbGlitter() 
+{
+  // built-in FastLED color-changing fill, plus some random sparkly glitter
+  //fill_solid( leds, NUM_LEDS, CRGB::FireBrick);
+  fill_solid( leds, NUM_LEDS, CHSV( gHue, 255, 192));
+  addGlitter(80);
+}
+
+
 void rainbow() 
 {
   // FastLED's built-in rainbow generator
