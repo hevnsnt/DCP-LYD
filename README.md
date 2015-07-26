@@ -33,7 +33,7 @@ Currently working code:
 			* 09 (RRRGGGBBB) <-- in progress
 
 
-	::FloorFlowers:: Is not depricated, but it does work.
+	::FloorFlowers:: Now depricated, but it does work.
 	-Warning it is pretty glitchy
 	-In order to change patters, send 0301, 0302, 0303, 0304
 
@@ -41,9 +41,9 @@ Currently working code:
 
 NEED WORK:
 
-	* Input bluetooth command (00, 01, 02, etc) and directly call the appropriate animation
-	* Make a function that turns off all LEDs (done)
-	* Make a function that turns ALL LEDS on a certain color (done)
+	* (done) Input bluetooth command (00, 01, 02, etc) and directly call the appropriate animation
+	* (done) Make a function that turns off all LEDs 
+	* (done) Make a function that turns ALL LEDS on a certain color
 	* Make a mode that needs RGB input, light the whole strand. Get this input from color wheel
 
 
