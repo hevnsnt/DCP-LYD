@@ -16,7 +16,7 @@ Requirements:
 
 Currently working code: 
 
-	::FloorFlowering2::
+	::FloorFlowering::
 	* In order to change patterns:
 		* Download application: RFduino Test
 		* Scan for your lanyard

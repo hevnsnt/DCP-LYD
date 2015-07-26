@@ -32,7 +32,7 @@ void setup() {
   delay(3000); // 3 second delay for recovery
   RFduinoBLE.txPowerLevel = -20;
   RFduinoBLE.deviceName = "Defcon Lanyard";
-  RFduinoBLE.advertisementInterval = 2000;
+  RFduinoBLE.advertisementInterval = 10000;
   RFduinoBLE.advertisementData = "LED";
   RFduinoBLE.begin();
   // tell FastLED about the LED strip configuration
@@ -67,6 +67,7 @@ void RFduinoBLE_onConnect()
 {
   //Serial.println("RFduino BLE connection successful");
   //gCurrentPatternNumber = 8; 
+  for(int xblink = 0; xblink < 5; xblink++){  // Blink Red 5 times upon connection
   fill_solid( leds, NUM_LEDS, CRGB::Red);
   FastLED.show();
   delay(100);
@@ -74,6 +75,7 @@ void RFduinoBLE_onConnect()
   fill_solid( leds, NUM_LEDS, CRGB::Black);
   FastLED.show();
   delay(100); 
+  }
 }
 
 void RFduinoBLE_onReceive(char *data, int len){
