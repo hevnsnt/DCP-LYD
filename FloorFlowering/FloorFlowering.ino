@@ -50,8 +50,8 @@ SimplePatternList gPatterns = { turnoff, // 0
                                 confetti, // 2
                                 sinelon, // 3
                                 juggle, // 4
-                                bpm, // 5
-                                Fire2012, // 6
+                                Fire2012, // 5
+                                bpm, // 6
                                 Cylon, // 7
                                 discostrobe, // 8
                                 rainbowWithGlitter, // 9

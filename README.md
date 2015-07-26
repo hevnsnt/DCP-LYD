@@ -22,18 +22,19 @@ Currently working code:
 		* Scan for your lanyard
 		* Connect (Lanyard should blink red on connect)
 		* Send commands: 
-			* 00 (rgbGlitter)
-			* 01 (confetti)
-			* 02 (sinelon)
-			* 03 (juggle), 
-			* 04 (bpm)
+			* 00 (Off)
+			* 01 (rgbGlitter)
+			* 02 (confetti)
+			* 03 (sinelon)
+			* 04 (juggle)
 			* 05 (Fire)
-			* 06 (Cylon)
-			* 07 (discostrobe), 
-			* 08 (rainbowWithGlitter)
-			* 09 (DefconParties)
-			* 10 (RRRGGGBBB) <-- In progress
-			* 11 (rotatOR) <-- In progress
+			* 06 (bpm)
+			* 07 (Cylon)
+			* 08 (discostrobe)
+			* 09 (rainbowWithGlitter)
+			* 10 (DefconParties)
+			* 11 (RRRGGGBBB) <-- In progress
+			* 12 (rotatOR) <-- In progress
 
 
 
