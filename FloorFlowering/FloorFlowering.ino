@@ -45,7 +45,18 @@ void setup() {
 
 // List of patterns to cycle through.  Each is defined as a separate function below.
 typedef void (*SimplePatternList[])();
-SimplePatternList gPatterns = { rgbGlitter, confetti, sinelon, juggle, bpm, Fire2012, Cylon, discostrobe, rainbowWithGlitter, DefconParties, RRRGGGBBB };
+SimplePatternList gPatterns = { turnoff, // 0
+                                rgbGlitter, // 1
+                                confetti, // 2
+                                sinelon, // 3
+                                juggle, // 4
+                                bpm, // 5
+                                Fire2012, // 6
+                                Cylon, // 7
+                                discostrobe, // 8
+                                rainbowWithGlitter, // 9
+                                DefconParties, // 10
+                                RRRGGGBBB }; // 11
 
 uint8_t gCurrentPatternNumber = 1; // Index number of which pattern is current
 uint8_t rotator = 0; // If set to 1, rotate through the patterns
@@ -82,38 +93,41 @@ void RFduinoBLE_onConnect()
 void RFduinoBLE_onReceive(char *data, int len){
 switch (data[0])
 {
-  case 0: gCurrentPatternNumber = 0; // rgbGlitter
+  case 0: gCurrentPatternNumber = 0; // turn off
           break;
 
-  case 1: gCurrentPatternNumber = 1; // Confetti
+  case 1: gCurrentPatternNumber = 1; // rgbGlitter
           break;
 
-  case 2: gCurrentPatternNumber = 2; // Sinelon
+  case 2: gCurrentPatternNumber = 2; // Confetti
           break;
           
-  case 3: gCurrentPatternNumber = 3; // Juggle
+  case 3: gCurrentPatternNumber = 3; // Sinelon
           break;
           
-  case 4: gCurrentPatternNumber = 4; // bpm
+  case 4: gCurrentPatternNumber = 4; // Juggle
           break;
           
-  case 5: fill_solid( leds, NUM_LEDS, CRGB::Black);
-          gCurrentPatternNumber = 5; // Fire2012
+  case 5: gCurrentPatternNumber = 5; // bpm
           break;
           
-  case 6: gCurrentPatternNumber = 6; // Cylon
+  case 6: fill_solid( leds, NUM_LEDS, CRGB::Black);
+          gCurrentPatternNumber = 6; // Fire2012
           break;
           
-  case 7: gCurrentPatternNumber = 7; // Discostrobe
+  case 7: gCurrentPatternNumber = 7; // Cylon
           break;
 
-  case 8: gCurrentPatternNumber = 8; // RainbowWithGlitter
+  case 8: gCurrentPatternNumber = 8; // Discostrobe
           break;
 
-  case 9: gCurrentPatternNumber = 9; // DefconParties
+  case 9: gCurrentPatternNumber = 9; // RainbowWithGlitter
           break;
 
-  case 10: gCurrentPatternNumber = 10; // RRRGGGBBB  -- not working yet
+  case 10: gCurrentPatternNumber = 10; // DefconParties
+          break;
+  
+  case 11: gCurrentPatternNumber = 11; // RRRGGGBBB  -- not working yet rotatOR  -- not working yet
           break;
                                                   
   }
