@@ -46,7 +46,8 @@ void setup() {
 typedef void (*SimplePatternList[])();
 SimplePatternList gPatterns = { rainbowWithGlitter, confetti, sinelon, juggle, bpm, Fire2012, Cylon, discostrobe, RRRGGGBBB };
 
-uint8_t gCurrentPatternNumber = 6; // Index number of which pattern is current
+uint8_t gCurrentPatternNumber = 1; // Index number of which pattern is current
+uint8_t rotator = 0; // If set to 1, rotate through the patterns
 uint8_t gHue = 0; // rotating "base color" used by many of the patterns
   
 void loop()
@@ -64,35 +65,48 @@ void loop()
 
 void RFduinoBLE_onConnect()
 {
-  Serial.println("RFduino BLE connection successful");
-  gCurrentPatternNumber = 8; 
+  //Serial.println("RFduino BLE connection successful");
+  //gCurrentPatternNumber = 8; 
+  fill_solid( leds, NUM_LEDS, CRGB::Red);
+  FastLED.show();
+  delay(100);
+  // Set the strip back to black for 1 second
+  fill_solid( leds, NUM_LEDS, CRGB::Black);
+  FastLED.show();
+  delay(100); 
 }
 
 void RFduinoBLE_onReceive(char *data, int len){
 switch (data[0])
 {
-  case 0: gCurrentPatternNumber = 0; 
+  case 0: gCurrentPatternNumber = 0; // RainbowWithGlitter
           break;
 
-  case 1: gCurrentPatternNumber = 1; 
+  case 1: gCurrentPatternNumber = 1; // Confetti
           break;
 
-  case 2: gCurrentPatternNumber = 2;
+  case 2: gCurrentPatternNumber = 2; // Sinelon
           break;
           
-  case 3: gCurrentPatternNumber = 3;
+  case 3: gCurrentPatternNumber = 3; // Juggle
           break;
           
-  case 4: gCurrentPatternNumber = 4;
+  case 4: gCurrentPatternNumber = 4; // bpm
           break;
           
-  case 5: gCurrentPatternNumber = 5;
+  case 5: gCurrentPatternNumber = 5; // Fire2012
           break;
           
-  case 6: gCurrentPatternNumber = 6;
+  case 6: gCurrentPatternNumber = 6; // Cylon
           break;
           
-  case 7: gCurrentPatternNumber = 7;
+  case 7: gCurrentPatternNumber = 7; // Discostrobe
+          break;
+
+  case 8: gCurrentPatternNumber = 8; // RRRGGGBBB  -- not working yet
+          break;
+
+  case 9: gCurrentPatternNumber = 9; // RotatOR  -- not working yet
           break;
                                                   
   }

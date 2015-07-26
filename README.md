@@ -16,7 +16,24 @@ Requirements:
 
 Currently working code: 
 
-	::FloorFlowers::
+	::FloorFlowering2::
+	* In order to change patterns:
+		* Download application: RFduino Test
+		* Scan for your lanyard
+		* Connect (Lanyard should blink red on connect)
+		* Send commands: 
+			* 01 (rainbowWithGlitter)
+			* 02 (confetti)
+			* 03 (sinelon)
+			* 04 (juggle), 
+			* 05 (bpm)
+			* 06 (Fire2012)
+			* 07 (Cylon)
+			* 08 (discostrobe), 
+			* 09 (RRRGGGBBB) <-- in progress
+
+
+	::FloorFlowers:: Is not depricated, but it does work.
 	-Warning it is pretty glitchy
 	-In order to change patters, send 0301, 0302, 0303, 0304
 
