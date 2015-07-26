@@ -1,6 +1,6 @@
 /*
 The sketch is for use for the DefconParties 'FloorFlower' device only.
-Please put more infor here someday, ok?
+Stop procrastinating and please put ?
 
 Lots of code stolen from: 
   -FastLED.io DemoReel
@@ -71,20 +71,30 @@ void RFduinoBLE_onConnect()
 void RFduinoBLE_onReceive(char *data, int len){
 switch (data[0])
 {
-  case 0: fadeToBlackBy( leds, NUM_LEDS, 10);
-          FastLED.show();
-          FastLED.delay(1000/FRAMES_PER_SECOND);   
+  case 0: gCurrentPatternNumber = 0; 
           break;
 
-  case 1: nextPattern();
-          FastLED.show();
-          FastLED.delay(1000/FRAMES_PER_SECOND);  
+  case 1: gCurrentPatternNumber = 1; 
           break;
 
-  case 2: confetti();
-          FastLED.show();
-          FastLED.delay(1000/FRAMES_PER_SECOND);  
+  case 2: gCurrentPatternNumber = 2;
           break;
+          
+  case 3: gCurrentPatternNumber = 3;
+          break;
+          
+  case 4: gCurrentPatternNumber = 4;
+          break;
+          
+  case 5: gCurrentPatternNumber = 5;
+          break;
+          
+  case 6: gCurrentPatternNumber = 6;
+          break;
+          
+  case 7: gCurrentPatternNumber = 7;
+          break;
+                                                  
   }
 }
 
