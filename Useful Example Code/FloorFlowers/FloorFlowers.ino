@@ -6,6 +6,10 @@ Lots of code stolen from:
   -FastLED.io DemoReel
   -FastLED Fire2012
   -http://joergwende.wordpress.com
+
+ ::FloorFlowers:: Now depricated, but it does work. You should be using FloorFlowering instead
+-Warning it is pretty glitchy
+-In order to change patters, send 0301, 0302, 0303, 0304
 */
 
 #include "FastLED.h"
