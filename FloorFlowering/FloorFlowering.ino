@@ -30,8 +30,8 @@ FASTLED_USING_NAMESPACE
 
 void setup() {
   delay(3000); // 3 second delay for recovery
-  RFduino_ULPDelay(INFINITE);
-  //RFduinoBLE.txPowerLevel = -20;
+  //RFduino_ULPDelay(INFINITE);
+  RFduinoBLE.txPowerLevel = -20;
   RFduinoBLE.deviceName = "Defcon Lanyard";
   RFduinoBLE.advertisementInterval = 10000;
   RFduinoBLE.advertisementData = "LED";
