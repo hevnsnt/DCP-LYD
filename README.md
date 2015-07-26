@@ -32,8 +32,8 @@ Currently working code:
 			* 07 (discostrobe), 
 			* 08 (rainbowWithGlitter)
 			* 09 (DefconParties)
-			* 09 (RRRGGGBBB) <-- In progress
-			* 10 (rotatOR) <-- In progress
+			* 10 (RRRGGGBBB) <-- In progress
+			* 11 (rotatOR) <-- In progress
 
 
 
