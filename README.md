@@ -22,15 +22,16 @@ Currently working code:
 		* Scan for your lanyard
 		* Connect (Lanyard should blink red on connect)
 		* Send commands: 
-			* 01 (rainbowWithGlitter)
-			* 02 (confetti)
-			* 03 (sinelon)
-			* 04 (juggle), 
-			* 05 (bpm)
-			* 06 (Fire2012)
-			* 07 (Cylon)
-			* 08 (discostrobe), 
-			* 09 (RRRGGGBBB) <-- in progress
+			* 00 (rainbowWithGlitter)
+			* 01 (confetti)
+			* 02 (sinelon)
+			* 03 (juggle), 
+			* 04 (bpm)
+			* 05 (Fire2012)
+			* 06 (Cylon)
+			* 07 (discostrobe), 
+			* 08 (RRRGGGBBB) <-- in progress
+			* 09 (rotatOR) <-- in progress
 
 
 	::FloorFlowers:: Now depricated, but it does work.
