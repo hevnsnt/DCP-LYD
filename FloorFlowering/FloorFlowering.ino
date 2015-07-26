@@ -110,7 +110,7 @@ switch (data[0])
   case 8: gCurrentPatternNumber = 8; // RainbowWithGlitter
           break;
 
-  case 9: gCurrentPatternNumber = 9; // DefconParties  -- not working yet
+  case 9: gCurrentPatternNumber = 9; // DefconParties
           break;
 
   case 10: gCurrentPatternNumber = 10; // RRRGGGBBB  -- not working yet
