@@ -32,7 +32,7 @@ void setup() {
   delay(3000); // 3 second delay for recovery
   //RFduino_ULPDelay(INFINITE);
   RFduinoBLE.txPowerLevel = -20;
-  RFduinoBLE.deviceName = "Defcon Lanyard";
+  RFduinoBLE.deviceName = "DefconParites Lanyard";
   RFduinoBLE.advertisementInterval = 10000;
   RFduinoBLE.advertisementData = "LED";
   RFduinoBLE.begin();
@@ -108,11 +108,11 @@ switch (data[0])
   case 4: gCurrentPatternNumber = 4; // Juggle
           break;
           
-  case 5: gCurrentPatternNumber = 5; // bpm
+  case 5: fill_solid( leds, NUM_LEDS, CRGB::Black); // Fire2012
+          gCurrentPatternNumber = 5; 
           break;
           
-  case 6: fill_solid( leds, NUM_LEDS, CRGB::Black);
-          gCurrentPatternNumber = 6; // Fire2012
+  case 6: gCurrentPatternNumber = 6; // bpm
           break;
           
   case 7: gCurrentPatternNumber = 7; // Cylon
